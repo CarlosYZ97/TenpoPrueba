@@ -1,6 +1,6 @@
 # Prueba
 
-Microservicio de cálculo con porcentaje dinámico y registro asincrónico del historial de llamadas, construido con arquitectura hexagonal (Ports & Adapters) y Domain-Driven Design (DDD).
+Microservicio de cálculo con porcentaje dinámico y registro asincrónico del historial de llamadas, construido con arquitectura hexagonal.
 
 ---
 
