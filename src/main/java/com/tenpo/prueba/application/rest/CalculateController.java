@@ -18,7 +18,7 @@ public class CalculateController {
 
     private final CalculateService calculationService;
 
-    @GetMapping(PathConstant.CALCULATE_PERCENTAGE)
+    @PostMapping(PathConstant.CALCULATE_PERCENTAGE)
     @Operation(summary = "Calcula (a + b) aplicando un porcentaje dinámico", description = "Resultado de porcentaje se guarda en un historial de llamadas")
     public CalculateResponseDto calculate(@RequestBody CalculateRequestDto calculationRequestDto) {
         return calculationService.calculate(calculationRequestDto);

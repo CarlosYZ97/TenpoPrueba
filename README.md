@@ -93,23 +93,90 @@ prueba/
 
 ## 🚀 Cómo levantar el proyecto
 
-1. Clonar el repo:
+### 1. Compilar y correr tests
 
 ```bash
-git clone https://github.com/CarlosYZ97/prueba.git
-cd prueba
+./gradlew clean build test
 ```
 
-2. Ejecutar con Gradle:
+> Esto compila, limpia archivos temporales, y corre las pruebas unitarias.
+
+### 2. Ejecutar en modo local
+
+En tu IDE (por ejemplo IntelliJ), asegúrate de configurar el perfil local:
+
+1. Ve a "Run Configurations" o "Edit Configurations"
+2. En VM options agrega:
 
 ```bash
-./gradlew bootRun
+-Dspring.profiles.active=local
 ```
 
-3. Ver Swagger:
+### 3. Construir la imagen Docker
 
+```bash
+docker build -t tenpo-app .
 ```
-http://localhost:8080/swagger-ui/index.html
+
+### 4. Levantar todos los servicios (PostgreSQL, Redis y la App)
+
+```bash
+docker-compose up --build
+```
+
+> Verifica que no haya contenedores locales en los puertos 5435 (Postgres) o 6379 (Redis)
+
+### 5. Acceso a la API
+
+- Swagger: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- POST `/api/v1/calculator/calculate`
+- GET `/api/v1/calculator/history`
+
+---
+
+## 🧪 Tests
+
+Se ejecutan automáticamente con el build:
+
+```bash
+./gradlew test
+```
+
+---
+
+## 🐳 Docker Compose (Resumen)
+
+```yaml
+services:
+  postgres:
+    image: postgres:15
+    ports:
+      - "5435:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  app:
+    image: tenpo-app
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+```
+
+---
+
+## 📥 Descargar proyecto
+
+Puedes clonar este repositorio:
+
+```bash
+git clone https://github.com/CarlosYZ97/TenpoPrueba.git
 ```
 
 ---
