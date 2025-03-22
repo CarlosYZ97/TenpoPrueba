@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -31,7 +32,7 @@ public class PercentageServiceImpl implements PercentageService {
             log.info("[PercentageServiceImpl] - getPercentage: retorna valor de caché : {} ", cached);
             if (cached != null) return (Double) cached.get();
             log.info("[PercentageServiceImpl] - getPercentage: retorna error controlado");
-            throw new WebException(ErrorConstant.ERROR_GET_PERCENTAGE);
+            throw new WebException(ErrorConstant.ERROR_GET_PERCENTAGE , HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
     }
 }

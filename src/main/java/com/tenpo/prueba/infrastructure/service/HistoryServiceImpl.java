@@ -20,7 +20,7 @@ public class HistoryServiceImpl implements HistoryService {
     @Async
     @Override
     public void save(History history) {
-        log.info("Guardando historial async: {}", history);
+        log.info("[HistoryServiceImpl] - save: Guardando historial async: {} ", history);
         historyRepository.save(history);
     }
 
