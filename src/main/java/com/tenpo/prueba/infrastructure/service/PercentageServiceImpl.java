@@ -28,7 +28,9 @@ public class PercentageServiceImpl implements PercentageService {
             return percentage;
         } catch (Exception e){
             Cache.ValueWrapper cached = cacheManager.getCache(CACHE_NAME).get(CACHE_KEY);
+            log.info("[PercentageServiceImpl] - getPercentage: retorna valor de caché : {} ", cached);
             if (cached != null) return (Double) cached.get();
+            log.info("[PercentageServiceImpl] - getPercentage: retorna error controlado");
             throw new WebException(ErrorConstant.ERROR_GET_PERCENTAGE);
         }
     }

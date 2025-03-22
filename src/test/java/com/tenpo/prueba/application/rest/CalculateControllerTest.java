@@ -35,13 +35,12 @@ class CalculateControllerTest {
 
     @Test
     void testCalculate() throws Exception {
-        // Arrange
+
         CalculateRequestDto request = new CalculateRequestDto(10.0, 5.0);
         CalculateResponseDto response = new CalculateResponseDto(10.0, 5.0, 20.0, 18.0);
 
         Mockito.when(calculateService.calculate(any(CalculateRequestDto.class))).thenReturn(response);
 
-        // Act & Assert
         mockMvc.perform(post("/api/v1/calculator/calculate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
@@ -68,7 +67,6 @@ class CalculateControllerTest {
 
         Mockito.when(calculateService.getAllHistory()).thenReturn(historyList);
 
-        // Act & Assert
         mockMvc.perform(get("/api/v1/calculator/history"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1));

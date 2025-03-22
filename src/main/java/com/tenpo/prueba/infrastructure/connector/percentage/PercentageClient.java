@@ -14,11 +14,11 @@ public class PercentageClient {
         int chance = random.nextInt(10);
         if (chance < 7) {
             double value = 10.0 + random.nextDouble() * 10;
-            log.info("PercentageClient returned: {}", value);
+            log.info("[PercentageClient] - getPercentage: retorna valor : {} ", value);
             return value;
         } else {
-            log.warn("PercentageClient failed");
-            throw new RuntimeException("External service error");
+            log.warn("[PercentageClient] - getPercentage: Error de servicio para obtener porcentaje");
+            throw new RuntimeException("Error de servicio para obtener porcentaje");
         }
     }
 

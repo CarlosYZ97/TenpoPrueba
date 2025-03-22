@@ -2,21 +2,6 @@
 
 Microservicio de cálculo con porcentaje dinámico y registro asincrónico del historial de llamadas, construido con arquitectura hexagonal.
 
----
-
-## 🧩 Tecnologías utilizadas
-
-- Java 21
-- Spring Boot 3.4.3
-- Spring Web / Data JPA / Redis
-- MapStruct
-- PostgreSQL
-- Swagger (springdoc-openapi 2.3.0)
-- Arquitectura Hexagonal (DDD)
-- Gradle
-
----
-
 ## 📁 Estructura del proyecto
 
 ```
@@ -99,8 +84,6 @@ prueba/
 ./gradlew clean build test
 ```
 
-> Esto compila, limpia archivos temporales, y corre las pruebas unitarias.
-
 ### 2. Ejecutar en modo local
 
 En tu IDE (por ejemplo IntelliJ), asegúrate de configurar el perfil local:
@@ -118,7 +101,7 @@ En tu IDE (por ejemplo IntelliJ), asegúrate de configurar el perfil local:
 docker build -t tenpo-app .
 ```
 
-### 4. Levantar todos los servicios (PostgreSQL, Redis y la App)
+### 4. Levantar todos los servicios (PostgreSQL, Redis y la Aplicación)
 
 ```bash
 docker-compose up --build
@@ -141,35 +124,6 @@ Se ejecutan automáticamente con el build:
 ```bash
 ./gradlew test
 ```
-
----
-
-## 🐳 Docker Compose (Resumen)
-
-```yaml
-services:
-  postgres:
-    image: postgres:15
-    ports:
-      - "5435:5432"
-
-  redis:
-    image: redis:7
-    ports:
-      - "6379:6379"
-
-  app:
-    image: tenpo-app
-    build:
-      context: .
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-      - redis
-```
-
----
 
 ## 📥 Descargar proyecto
 
