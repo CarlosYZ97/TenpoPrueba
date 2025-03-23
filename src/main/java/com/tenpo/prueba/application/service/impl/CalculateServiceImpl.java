@@ -30,7 +30,7 @@ public class CalculateServiceImpl implements CalculateService {
                     .request(calculationRequestDto.toString())
                     .path(PathConstant.CALCULATE_PERCENTAGE)
                     .result(String.valueOf(result))
-                    .timestamp(LocalDateTime.now())
+                    .createDate(LocalDateTime.now())
                     .build());
 
             return CalculateResponseDto.builder()
@@ -44,7 +44,7 @@ public class CalculateServiceImpl implements CalculateService {
                     .request(calculationRequestDto.toString())
                     .path(PathConstant.CALCULATE_PERCENTAGE)
                     .error(ex.getMessage())
-                    .timestamp(LocalDateTime.now())
+                    .createDate(LocalDateTime.now())
                     .build());
             throw ex;
         }

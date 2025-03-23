@@ -18,6 +18,6 @@ public class History {
     private String path;
     private String result;
     private String error;
-    private LocalDateTime timestamp;
+    private LocalDateTime createDate;
 
 }
